@@ -137,12 +137,16 @@ const registerUser = async () => {
   loader.value = true;
 
   try {
-    const response = await axios.post(store.api_host + "/user/signup", {
-      name: user.value.name,
-      email: user.value.email,
-      password: user.value.password,
-      phone: user.value.phone,
-    });
+    const response = await axios.post(
+      store.api_host + "/user/signup",
+      {
+        name: user.value.name,
+        email: user.value.email,
+        password: user.value.password,
+        phone: user.value.phone,
+      },
+      {}
+    );
 
     if (response.status === 200 || response.status === 201) {
       // Set the success message to inform the user
