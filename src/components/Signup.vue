@@ -151,7 +151,7 @@ const registerUser = async () => {
     if (response.status === 200 || response.status === 201) {
       // Set the success message to inform the user
       successMessage.value =
-        "Inscription réussie ! Veuillez consulter vos mails pour vous connecter.";
+        "Inscription réussie ! Veuillez consulter vos mails pour vous connecter, vérifiez également vos spams.";
 
       console.log(response);
     } else {
