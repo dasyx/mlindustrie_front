@@ -1,0 +1,11 @@
+@mixin fixedBottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+@mixin displayMenus {
+  flex-direction: column;
+  text-align: center;
+  margin: 20px;
+}
