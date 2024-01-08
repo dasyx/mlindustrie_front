@@ -138,7 +138,7 @@ const registerUser = async () => {
 
   try {
     const response = await axios.post(
-      store.api_host + "/user/signup",
+      store.api_host + "/user/signup/",
       {
         name: user.value.name,
         email: user.value.email,
