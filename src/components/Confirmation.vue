@@ -13,6 +13,7 @@
 import { ref, onMounted } from "vue";
 import axios from "axios";
 import { useRoute, useRouter } from "vue-router";
+import store from "../modules/store.json";
 
 // Déclaration d'une référence réactive pour le message
 const message = ref("Confirmation en cours...");
@@ -26,9 +27,7 @@ onMounted(async () => {
 
   try {
     // Requête au serveur pour valider le token
-    const response = await axios.get(
-      `http://localhost:3000/user/confirm/${token}`
-    );
+    const response = await axios.get(`${store.api_host}/user/confirm/${token}`);
     // Mise à jour du message avec la réponse du serveur
     message.value = response.data.message;
   } catch (error) {
