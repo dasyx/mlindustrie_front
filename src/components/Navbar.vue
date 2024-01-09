@@ -93,24 +93,47 @@
           </p>
         </div>
         <!-- Fin -->
+        <!-- Affichage des boutons de connexions -->
         <div class="navbar-end">
           <div class="navbar-item">
             <div v-if="!userIsLogged" class="buttons">
               <a id="btn-inscription" class="button is-primary" href="/signup">
                 <strong>S'inscrire</strong>
               </a>
-              <a class="button is-light" href="/login"> Se connecter </a>
+              <a class="button is-light" href="/login">Se connecter</a>
             </div>
-            <button v-else class="button is-light" @click="logoutUser">
-              Se déconnecter
-            </button>
-            <span v-if="user">Bonjour {{ user.name }}</span>
-
-            <a class="navbar-item navbar-item_contact" href="/contact">
-              <i class="fas fa-envelope"></i><span>contact</span>
-            </a>
+            <div v-else class="user-controls">
+              <span v-if="user">Bonjour {{ user.name }}</span>
+              <a class="navbar-item navbar-item_contact" href="/contact">
+                <i class="fas fa-envelope"></i><span>contact</span>
+              </a>
+              <div class="button-group">
+                <button class="button is-light" @click="logoutUser">
+                  Se déconnecter
+                </button>
+                <button class="button is-danger" @click="deleteAccount">
+                  Supprimer le compte
+                </button>
+              </div>
+            </div>
           </div>
         </div>
+        <!-- Fin -->
+        <!-- Modal de confirmation -->
+        <div v-if="showModal" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <p>
+              Vous êtes sur le point de supprimer votre compte utilisateur.
+              Cette action est irréversible.
+            </p>
+            <button class="button is-danger" @click="confirmDelete">
+              Confirmer
+            </button>
+            <button class="button" @click="cancelDelete">Annuler</button>
+          </div>
+        </div>
+        <!-- Fin -->
       </div>
     </nav>
   </header>
@@ -143,6 +166,8 @@ const cataLink = computed(() => store1.state.cataLink);
 const userToken = useStorage("user-token", null, sessionStorage);
 const userId = useStorage("user-id", null, sessionStorage);
 
+const showModal = ref(false);
+
 // Récupération du token et vérification du statut de connexion de l'utilisateur
 const checkUserStatus = () => {
   const token = sessionStorage.getItem("user-token"); // Remplacer 'userToken' par la clé réelle utilisée
@@ -161,6 +186,34 @@ const checkUserStatus = () => {
         // localStorage.removeItem("user-token");
       });
   }
+};
+// Modifier la fonction deleteAccount pour afficher le modal
+const deleteAccount = () => {
+  showModal.value = true;
+};
+
+// Ajouter une fonction pour annuler la suppression
+const cancelDelete = () => {
+  showModal.value = false;
+};
+
+// Ajouter une nouvelle fonction pour confirmer la suppression
+const confirmDelete = () => {
+  const token = sessionStorage.getItem("user-token");
+  if (token) {
+    axios
+      .delete(`${store.api_host}/user/${userId.value}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response.data);
+        logoutUser();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  showModal.value = false;
 };
 
 const logoutUser = () => {
@@ -216,3 +269,56 @@ watchEffect(() => {
   userIsLogged.value = !!userToken.value; // This will be true if userToken is not null or empty
 });
 </script>
+
+<style scoped>
+/* Style par défaut pour les petits écrans */
+.user-controls {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Media query pour les écrans de plus de 768px */
+@media screen and (min-width: 768px) {
+  .user-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; /* Changez à flex-start pour aligner à gauche */
+  }
+
+  .user-controls > * {
+    margin-right: 20px; /* Espacement entre les éléments */
+  }
+
+  .button-group {
+    display: flex;
+    gap: 10px; /* Contrôle l'espacement entre les boutons */
+    margin-left: 20px;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Griser l'arrière-plan */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+.modal-content p {
+  margin-bottom: 20px;
+}
+.modal-content button {
+  margin: 0 10px;
+}
+</style>

@@ -1,3 +1,4 @@
 {
-  "api_host": "https://mlindustrie-297b243678fc.herokuapp.com"
+  "api_host": "https://mlindustrie-297b243678fc.herokuapp.com",
+  "localhost": "http://localhost:3000"
 }
