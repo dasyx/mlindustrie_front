@@ -14,6 +14,7 @@ import PdfFileComponent from "../components/PdfFileComponent.vue";
 import Maintenance from "../components/Maintenance.vue";
 import Certification from "../views/Certification.vue";
 import Confirmation from "../components/Confirmation.vue";
+import Legals from "../views/Legals.vue";
 
 const routes = [
   {
@@ -85,6 +86,11 @@ const routes = [
     path: "/confirm/:token",
     name: "Confirmation",
     component: Confirmation,
+  },
+  {
+    path: "/legals",
+    name: "Legals",
+    component: Legals,
   },
 ];
 const router = createRouter({

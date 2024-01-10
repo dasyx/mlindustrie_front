@@ -158,6 +158,7 @@ const downloads = ref([
   { name: "cartographie tarifs", url: "tarifs/cartographie_tarifs.pdf" },
   { name: "tarifs", url: "tarifs/tarifs_REG_2024.pdf" },
   { name: "cnil", url: "/cnil.pdf" },
+  { name: "plaquette", url: "/plaquette.pdf" },
 ]);
 
 const store1 = useStore();

@@ -71,6 +71,9 @@
           <h4>Mentions Légales</h4>
           <ul>
             <li>
+              <router-link to="/legals" class=""> RGPD </router-link>
+            </li>
+            <li>
               <a
                 class="displayDownload"
                 :href="cgvLink"

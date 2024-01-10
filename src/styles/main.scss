@@ -75,6 +75,8 @@ h3 {
 //     HEADER.VUE        //
 
 .navbar {
+  display: flex;
+  align-items: center;
   background-color: #c0c4c2;
   min-height: 6.25rem;
 }
@@ -104,7 +106,8 @@ h3 {
   }
 }
 .navbar-item_title {
-  margin-left: 230px;
+  margin-right: auto;
+  margin-left: auto;
 }
 .navbar-brand {
   flex-direction: column;
@@ -779,4 +782,14 @@ form {
     width: 420px;
     height: 400px;
   }
+}
+
+// LEGALS //
+
+.legals {
+  margin: 50px 0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: -10px 10px 0 hsla(0, 0%, 100%, 0.15),
+    10px -10px 0 hsla(0, 0%, 100%, 0.15);
 }
