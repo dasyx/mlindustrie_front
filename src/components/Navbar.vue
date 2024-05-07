@@ -40,6 +40,15 @@
           <router-link to="/certification" class="navbar-item hoverEffect">
             Certifications
           </router-link>
+          <a
+            v-for="presentation in presentations"
+            :key="presentation.name"
+            class="navbar-item hoverEffect"
+            :href="presentation.url"
+            presentation
+          >
+            {{ presentation.name }}
+          </a>
 
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link" href="#navbarHeader"> Plus </a>
@@ -154,11 +163,12 @@ const titre = ref("Des formations fiables et efficaces");
 const active = ref(false);
 const showNavbar = ref(true);
 const windowDimensions = ref({ width: 0, height: 0 });
+const presentations = ref([{ name: "presentation", url: "/ml_plaquette.pdf" }]);
+
 const downloads = ref([
   { name: "cartographie tarifs", url: "tarifs/cartographie_tarifs.pdf" },
   { name: "tarifs", url: "tarifs/tarifs_REG_2024.pdf" },
   { name: "cnil", url: "/cnil.pdf" },
-  //{ name: "plaquette", url: "/plaquette.pdf" },
 ]);
 
 const store1 = useStore();
@@ -175,7 +185,7 @@ const checkUserStatus = () => {
   if (token) {
     // Appel API ou autre méthode pour valider le token et récupérer les infos de l'utilisateur
     axios
-      .get(`${store.api_host}/user/${userId.value}`, {
+      .get(`${store.api_localhost}/user/${userId.value}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -203,7 +213,7 @@ const confirmDelete = () => {
   const token = sessionStorage.getItem("user-token");
   if (token) {
     axios
-      .delete(`${store.api_host}/user/${userId.value}`, {
+      .delete(`${store.api_localhost}/user/${userId.value}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
