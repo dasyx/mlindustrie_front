@@ -37,9 +37,6 @@
       >
         <div class="navbar-start">
           <!-- <a class="navbar-item hoverEffect" href="/"> Accueil </a> -->
-          <router-link to="/certification" class="navbar-item hoverEffect">
-            Certifications
-          </router-link>
           <a
             v-for="presentation in presentations"
             :key="presentation.name"
@@ -49,7 +46,9 @@
           >
             {{ presentation.name }}
           </a>
-
+          <router-link to="/certification" class="navbar-item hoverEffect">
+            Certifications
+          </router-link>
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link" href="#navbarHeader"> Plus </a>
 
