@@ -46,9 +46,6 @@
           >
             {{ presentation.name }}
           </a>
-          <router-link to="/certification" class="navbar-item hoverEffect">
-            Certifications
-          </router-link>
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link" href="#navbarHeader"> Plus </a>
 
@@ -59,6 +56,9 @@
                 class="navbar-item hoverEffect"
               >
                 Programme de formation
+              </router-link>
+              <router-link to="/certification" class="navbar-item hoverEffect">
+                Certifications
               </router-link>
               <router-link to="/qualite" class="navbar-item hoverEffect">
                 Qualité
