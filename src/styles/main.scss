@@ -76,11 +76,18 @@ h3 {
 //     HEADER.VUE        //
 
 .navbar {
-  display: flex;
   align-items: center;
   background-color: #c0c4c2;
   min-height: 6.25rem;
   overflow: hidden; /* Éviter le dépassement latéral */
+  position: fixed; /* Rendre la navbar fixe */
+  top: 0; /* La positionner en haut */
+  width: 100%; /* Occuper toute la largeur de l'écran */
+}
+
+.navbar-link {
+  position: relative; /* Position définie pour activer z-index */
+  z-index: 1001; /* Plus élevé que la navbar pour être au-dessus */
 }
 
 .navbar-item {
