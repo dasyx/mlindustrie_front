@@ -80,21 +80,27 @@ h3 {
   flex-wrap: wrap;
   background-color: #c0c4c2;
   min-height: 6.25rem;
+  overflow: hidden; /* Éviter le dépassement latéral */
 }
+
 .navbar-item {
   flex-direction: column;
   font-family: "Bebas_Neue";
   font-size: 1.4rem;
 }
+
 .navbar-item img {
   max-height: 4.75rem;
 }
+
 .navbar-item_contact {
   flex-direction: row;
 }
+
 .navbar-item_contact i {
   padding-right: 10px;
 }
+
 .navbar-item img:nth-of-type(2) {
   margin-top: 5px;
   max-height: 0.75rem;
@@ -106,10 +112,12 @@ h3 {
     width: 35%;
   }
 }
+
 .navbar-item_title {
   margin-right: auto;
   margin-left: auto;
 }
+
 .navbar-brand {
   flex-direction: column;
   min-height: 5.25rem;
@@ -117,21 +125,55 @@ h3 {
     text-decoration: none;
   }
 }
+
 @media screen and (min-width: 1024px) {
   .navbar-dropdown a.navbar-item {
     padding-right: 1.3rem;
   }
 }
+
 .navbar-menu {
   align-items: center;
+  width: 100%; /* Assurer que le menu occupe toute la largeur */
 }
+
+.navbar-burger {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-burger {
+    display: block;
+  }
+
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-menu.is-active {
+    display: block;
+  }
+
+  .navbar-start,
+  .navbar-end {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar-item {
+    width: 100%;
+  }
+}
+
 #btn-inscription {
   background-color: #267a89;
 }
+
 .displayHr {
   border-top: 2px solid #267a89;
   width: 20%;
 }
+
 .hoverEffect p {
   margin-right: 50px;
   font-family: "Bebas_Neue";
