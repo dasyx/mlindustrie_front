@@ -7,9 +7,3 @@ export default {
   name: "App",
 };
 </script>
-
-<style>
-body {
-  overflow-x: hidden;
-}
-</style>
