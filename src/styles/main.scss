@@ -78,7 +78,6 @@ h3 {
 .navbar {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   background-color: #c0c4c2;
   min-height: 6.25rem;
   overflow: hidden; /* Éviter le dépassement latéral */
@@ -130,6 +129,10 @@ h3 {
 @media screen and (min-width: 1024px) {
   .navbar-dropdown a.navbar-item {
     padding-right: 1.3rem;
+  }
+  .navbar-menu {
+    flex-grow: 1;
+    flex-shrink: 1;
   }
 }
 
