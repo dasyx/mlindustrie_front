@@ -79,18 +79,13 @@ h3 {
   align-items: center;
   background-color: #c0c4c2;
   min-height: 6.25rem;
-  overflow: hidden; /* Éviter le dépassement latéral */
   position: fixed; /* Rendre la navbar fixe */
   top: 0; /* La positionner en haut */
   width: 100%; /* Occuper toute la largeur de l'écran */
 }
 
-.navbar-link {
-  position: relative; /* Position définie pour activer z-index */
-  z-index: 1001; /* Plus élevé que la navbar pour être au-dessus */
-}
-
 .navbar-item {
+  position: relative;
   flex-direction: column;
   font-family: "Bebas_Neue";
   font-size: 1.4rem;
@@ -234,6 +229,8 @@ h3 {
 //     HOME.VUE        //
 
 .hero {
+  position: relative;
+  z-index: 1;
   color: #fff;
   background: $blue_background;
   background-color: #000;
@@ -243,9 +240,6 @@ h3 {
   @media screen and (max-width: 475px) {
     padding: 1.5rem 1.5rem;
   }
-}
-.hero-body {
-  position: relative;
 }
 .hero-body h1 {
   font-size: 3em;
