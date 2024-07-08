@@ -9,7 +9,7 @@
             Le 109, 1 Rue Berthe Morisot 76100 ROUEN
           </p>
           <p class="has-text-center">Tél. 0767825380</p>
-          <a href="mailto:mlindustrie76@gmail.com" class="footer_contact"
+          <a href="mailto:contact@mlindustrie.fr" class="footer_contact"
             ><p class="has-text-center">Email. mlindustrie76@gmail.com</p></a
           >
           <p class="has-text-center">
