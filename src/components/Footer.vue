@@ -117,9 +117,7 @@
               target="_blank"
               ><i id="linkedin" class="fa fa-linkedin-square"></i
             ></a>
-            <a
-              href="mailto:mlindustrie76@gmail.com"
-              aria-label="Ecrire un email"
+            <a href="mailto:contact@mlindustrie.fr" aria-label="Ecrire un email"
               ><i id="mail_icon" class="fa-regular fa-envelope-open"></i
             ></a>
           </div>
