@@ -46,24 +46,43 @@
             {{ presentation.name }}
           </a>
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link" href="#navbarHeader"> Plus </a>
+            <a class="navbar-link" href="#navbarHeader">Plus</a>
 
             <div class="navbar-dropdown">
               <router-link
                 v-if="userIsLogged"
                 to="/formation"
                 class="navbar-item hoverEffect"
+                >Programme de formation</router-link
               >
-                Programme de formation
-              </router-link>
-              <router-link to="/certification" class="navbar-item hoverEffect">
-                Certifications
-              </router-link>
-              <router-link to="/qualite" class="navbar-item hoverEffect">
-                Qualité
-              </router-link>
+              <router-link to="/certification" class="navbar-item hoverEffect"
+                >Certifications</router-link
+              >
+              <router-link to="/qualite" class="navbar-item hoverEffect"
+                >Qualité</router-link
+              >
+
+              <!-- Liens de téléchargements conditionnels pour "cartographie tarifs" et "tarifs" -->
               <a
-                v-for="download in downloads"
+                v-if="userIsLogged"
+                class="navbar-item hoverEffect"
+                href="tarifs/cartographie_tarifs.pdf"
+                download
+              >
+                Cartographie tarifs
+              </a>
+              <a
+                v-if="userIsLogged"
+                class="navbar-item hoverEffect"
+                href="tarifs/tarifs_REG_2024.pdf"
+                download
+              >
+                Tarifs
+              </a>
+
+              <!-- Autres liens de téléchargement -->
+              <a
+                v-for="download in filteredDownloads"
                 :key="download.name"
                 class="navbar-item hoverEffect"
                 :href="download.url"
@@ -71,26 +90,19 @@
               >
                 {{ download.name }}
               </a>
+
               <a
                 class="navbar-item hoverEffect"
                 href="https://www.ouformer.com/organisme-de-formation/ML-Industrie"
                 target="_blank"
-              >
-                Calendrier Inter</a
+                >Calendrier Inter</a
               >
               <hr class="navbar-divider" />
-              <a class="navbar-item" href="#footer"> En savoir plus</a>
+              <a class="navbar-item" href="#footer">En savoir plus</a>
             </div>
           </div>
         </div>
-        <div class="navbar-item navbar-item_title hoverEffect">
-          <p v-if="windowDimensions.width >= 767">
-            {{ societe }}
-          </p>
-          <p v-if="windowDimensions.width >= 767">
-            {{ titre }}
-          </p>
-        </div>
+
         <div class="navbar-end">
           <div class="navbar-item">
             <div v-if="!userIsLogged" class="buttons">
@@ -115,6 +127,7 @@
             </div>
           </div>
         </div>
+
         <div v-if="showModal" class="modal">
           <div class="modal-background"></div>
           <div class="modal-content">
@@ -146,13 +159,12 @@ const titre = ref("Des formations fiables et efficaces");
 const active = ref(false);
 const windowDimensions = ref({ width: 0, height: 0 });
 const presentations = ref([{ name: "presentation", url: "/ml_plaquette.pdf" }]);
-const downloads = ref([
-  { name: "cartographie tarifs", url: "tarifs/cartographie_tarifs.pdf" },
-  { name: "tarifs", url: "tarifs/tarifs_REG_2024.pdf" },
-  { name: "cnil", url: "/cnil.pdf" },
-]);
+
+// Exclusion des téléchargements "cartographie tarifs" et "tarifs"
+const downloads = ref([{ name: "cnil", url: "/cnil.pdf" }]);
+
+const filteredDownloads = computed(() => downloads.value);
 const store1 = useStore();
-const cataLink = computed(() => store1.state.cataLink);
 const userToken = useStorage("user-token", null, sessionStorage);
 const userId = useStorage("user-id", null, sessionStorage);
 const showModal = ref(false);
@@ -235,56 +247,3 @@ watchEffect(() => {
   userIsLogged.value = !!userToken.value;
 });
 </script>
-
-<style scoped>
-/* Style par défaut pour les petits écrans */
-.user-controls {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Media query pour les écrans de plus de 768px */
-@media screen and (min-width: 768px) {
-  .user-controls {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start; /* Changez à flex-start pour aligner à gauche */
-  }
-
-  .user-controls > * {
-    margin-right: 20px; /* Espacement entre les éléments */
-  }
-
-  .button-group {
-    display: flex;
-    gap: 10px; /* Contrôle l'espacement entre les boutons */
-    margin-left: 20px;
-  }
-}
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5); /* Griser l'arrière-plan */
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 5px;
-  text-align: center;
-}
-.modal-content p {
-  margin-bottom: 20px;
-}
-.modal-content button {
-  margin: 0 10px;
-}
-</style>
