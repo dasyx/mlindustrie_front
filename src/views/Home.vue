@@ -17,6 +17,144 @@
             alt="certification_qualiopi"
           />
         </div>
+        <!-- Section des avis clients -->
+        <section id="section_clients" class="is-medium is-bold">
+          <div class="hero-body">
+            <h2 class="title">Ce que disent nos clients</h2>
+            <hr class="styled-hr" />
+            <div class="container container_clients">
+              <div class="client_reviews">
+                <div class="client_review">
+                  <div class="client_avatar">
+                    <span
+                      class="avatar_circle"
+                      style="background-color: #4a90e2"
+                      >N</span
+                    >
+                  </div>
+                  <div class="review_content">
+                    <blockquote class="review_text">
+                      <i class="fas fa-quote-left quote-icon"></i>
+                      <p>
+                        <em>
+                          "Centre de formation très sérieux, la formatrice a
+                          bien pris le temps pour le cours avant test et a su
+                          répondre à toutes les questions concernant la
+                          formation, je recommande à 100%"
+                        </em>
+                      </p>
+                      <i class="fas fa-quote-right quote-icon"></i>
+                    </blockquote>
+                    <span class="client_name">- Nordine El Yakou</span>
+                  </div>
+                </div>
+
+                <div class="client_review">
+                  <div class="client_avatar">
+                    <span
+                      class="avatar_circle"
+                      style="background-color: #ff6f61"
+                      >C</span
+                    >
+                  </div>
+                  <div class="review_content">
+                    <blockquote class="review_text">
+                      <i class="fas fa-quote-left quote-icon"></i>
+                      <p>
+                        <em
+                          >"ML Industrie, organisme de formation très sérieux,
+                          professionnel, réactif et qui trouve toujours une
+                          solution pour accompagner ses clients et les
+                          partenaires. Je recommande fortement"</em
+                        >
+                      </p>
+                      <i class="fas fa-quote-right quote-icon"></i>
+                    </blockquote>
+                    <span class="client_name">- Charlotte Boucourt</span>
+                  </div>
+                </div>
+
+                <div class="client_review">
+                  <div class="client_avatar">
+                    <span
+                      class="avatar_circle"
+                      style="background-color: #6bc1e1"
+                      >B</span
+                    >
+                  </div>
+                  <div class="review_content">
+                    <blockquote class="review_text">
+                      <i class="fas fa-quote-left quote-icon"></i>
+                      <p>
+                        <em
+                          >"Très bon organisme de formation, disponible,
+                          sérieux. ML Industrie se distingue par la qualité de
+                          ses formateurs et des moyens mis en oeuvre afin de
+                          mener au mieux votre formation."</em
+                        >
+                      </p>
+                      <i class="fas fa-quote-right quote-icon"></i>
+                    </blockquote>
+                    <span class="client_name">- Baptiste Le Goaziou</span>
+                  </div>
+                </div>
+
+                <div class="client_review">
+                  <div class="client_avatar">
+                    <span
+                      class="avatar_circle"
+                      style="background-color: #f3c623"
+                      >J</span
+                    >
+                  </div>
+                  <div class="review_content">
+                    <blockquote class="review_text">
+                      <i class="fas fa-quote-left quote-icon"></i>
+                      <p>
+                        <em
+                          >"Je suis gérant d'une entreprise de chaufffage à
+                          Isneauville. Ayant eu besoin urgent de formation
+                          Electricien pour mes collaborateurs, j'ai découvert ce
+                          centre de formation à Isneauville, qui a su me trouver
+                          une solution immédiate, efficace. Merci M. Levast pour
+                          vos efforts. Je recommande à 100%."</em
+                        >
+                      </p>
+                      <i class="fas fa-quote-right quote-icon"></i>
+                    </blockquote>
+                    <span class="client_name">- Julien Fréry</span>
+                  </div>
+                </div>
+
+                <div class="client_review">
+                  <div class="client_avatar">
+                    <span
+                      class="avatar_circle"
+                      style="background-color: #9b59b6"
+                      >A</span
+                    >
+                  </div>
+                  <div class="review_content">
+                    <blockquote class="review_text">
+                      <i class="fas fa-quote-left quote-icon"></i>
+                      <p>
+                        <em
+                          >"Oganisme de formation très professionnel, réactif et
+                          de très bon conseils. Tarifs très compétitifs/ Bon
+                          rapport qualité prix. Je recommande."</em
+                        >
+                      </p>
+                      <i class="fas fa-quote-right quote-icon"></i>
+                    </blockquote>
+                    <span class="client_name">- Agathe Simon</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Fin de la section des avis clients -->
+
         <div class="container_certification__flex-right">
           <h2 id="firstParagraph">
             {{ firstParagraph_pt1 }}<span>2019</span>{{ firstParagraph_pt2 }}
@@ -266,7 +404,7 @@
       <a class="item partner_asa" href="#carousel" target="_blank">
         <img src="../../public/logos/asa.webp" alt="logo_asa_conception" />
       </a>
-      <a class="item partner_dl" href="https://davidlevast.fr" target="_blank">
+      <a class="item partner_dl" href="https://davidlevast.com" target="_blank">
         <img
           src="../../public/logos/logo_davidlevast.webp"
           alt="logo_david_levast"
@@ -449,3 +587,100 @@ export default {
   },
 };
 </script>
+
+<style>
+.container_clients {
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.client_reviews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Positionner l'avatar à gauche de chaque avis */
+.client_review {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: #3d3c3c;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  flex: 1 1 calc(33.333% - 1.5rem);
+  max-width: calc(33.333% - 1.5rem);
+}
+
+.client_avatar {
+  width: 100px;
+  border-radius: 50%;
+  background-color: #4a90e2;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0; /* Supprimer le centrage de l'avatar */
+}
+
+.quote-icon {
+  font-size: 1.5rem;
+  color: #d1d1d1;
+}
+
+.review_text {
+  font-style: italic;
+  margin: 0.5rem 0;
+  flex: 1; /* Prendre toute la largeur disponible */
+}
+
+.client_name {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+#section_clients h2 {
+  text-align: left;
+}
+/* Positionnement du hr juste en dessous du h2 */
+.styled-hr {
+  width: 100px;
+  height: 4px;
+  background-color: #fff;
+  border: none;
+  margin: -4.5rem 0 1rem 0; /* Réduction de l'espacement supérieur */
+}
+
+.avatar_circle {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #4a90e2;
+  color: #ffffff;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+/* Deux colonnes dès 1400px et moins */
+@media (max-width: 1400px) {
+  .client_review {
+    flex: 1 1 calc(50% - 1.5rem);
+    max-width: calc(50% - 1.5rem);
+  }
+}
+
+/* Une colonne dès 1024px et moins */
+@media (max-width: 1024px) {
+  .client_review {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+</style>
