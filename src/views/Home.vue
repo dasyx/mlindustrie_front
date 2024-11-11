@@ -348,7 +348,9 @@
   </section>
   <!-- Fin de la section certifications-->
   <!-- Début de la section partenaires-->
+  <aside><h2>Nos partenaires</h2></aside>
   <section class="hero is-medium is-bold carousel">
+    <h2 class="carousel-title">Nos partenaires</h2>
     <input
       id="position1"
       for="position1"
@@ -385,21 +387,15 @@
       name="position"
       aria-label="position5"
     />
-    <input
-      id="position6"
-      for="position6"
-      type="radio"
-      name="position"
-      aria-label="position6"
-    />
-    <h2 id="partner_lowRes">Nos partenaires</h2>
     <div id="carousel">
-      <h2 id="partner_highRes">Nos partenaires</h2>
-      <a class="item partner_aexor" href="#carousel" target="_blank">
-        <img src="../../public/logos/aexor.webp" alt="logo_aexor" />
-      </a>
       <a class="item partner_bart" href="#carousel">
         <img src="../../public/logos/bart.webp" alt="logo_bart_metallerie" />
+      </a>
+      <a class="item partner_prisma" href="#carousel" target="_blank">
+        <img
+          src="../../public/logos/prisma-robotique-logo.webp"
+          alt="logo_formation_industrie"
+        />
       </a>
       <a class="item partner_asa" href="#carousel" target="_blank">
         <img src="../../public/logos/asa.webp" alt="logo_asa_conception" />
@@ -418,9 +414,6 @@
           src="../../public/logos/usinage_formations.webp"
           alt="logo_usinage_formations"
         />
-      </a>
-      <a class="item partner_robotique" href="#carousel" target="_blank">
-        <img src="../../public/logos/rc.webp" alt="logo_robotique_concept" />
       </a>
     </div>
   </section>
