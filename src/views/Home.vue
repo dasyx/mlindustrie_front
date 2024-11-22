@@ -388,22 +388,27 @@
       aria-label="position5"
     />
     <div id="carousel">
-      <a class="item partner_bart" href="#carousel">
-        <img src="../../public/logos/bart.webp" alt="logo_bart_metallerie" />
-      </a>
-      <a class="item partner_prisma" href="#carousel" target="_blank">
-        <img
-          src="../../public/logos/prisma-robotique-logo.webp"
-          alt="logo_formation_industrie"
-        />
-      </a>
-      <a class="item partner_asa" href="#carousel" target="_blank">
-        <img src="../../public/logos/asa.webp" alt="logo_asa_conception" />
-      </a>
       <a class="item partner_dl" href="https://davidlevast.com" target="_blank">
         <img
           src="../../public/logos/logo_davidlevast.webp"
           alt="logo_david_levast"
+        />
+      </a>
+      <a class="item partner_bart" href="#carousel">
+        <img src="../../public/logos/bart.webp" alt="logo_bart_metallerie" />
+      </a>
+
+      <a class="item partner_asa" href="#carousel" target="_blank">
+        <img src="../../public/logos/asa.webp" alt="logo_asa_conception" />
+      </a>
+      <a
+        class="item partner_prisma"
+        href="http://www.prisma-robotique.com/"
+        target="_blank"
+      >
+        <img
+          src="../../public/logos/prisma-robotique-logo.webp"
+          alt="logo_formation_industrie"
         />
       </a>
       <a class="item partner_artemys" href="#carousel">
