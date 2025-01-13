@@ -103,7 +103,7 @@ const registerUser = async () => {
       console.log("Stored Token:", userToken.value); // Verify storage
       console.log("Stored User ID:", userId.value); // Verify storage
 
-      router.push({ name: "Login" });
+      router.push({ name: "Home" });
     } else {
       console.log("Erreur d'envoi de formulaire");
     }
