@@ -17,6 +17,7 @@
             class="input"
             type="text"
             placeholder="Veuillez saisir votre nom d'utilisateur"
+            required
           />
           <span class="icon is-small is-left">
             <i class="fas fa-user"></i>
@@ -32,29 +33,13 @@
             class="input"
             type="email"
             placeholder="Veuillez saisir une adresse email valide"
+            required
           />
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
         </div>
       </div>
-
-      <!-- <div class="field">
-      <label for="phone" class="label">Téléphone</label>
-      <div class="control has-icons-left has-icons-right">
-        <input
-          id="phone"
-          v-model="user.phone"
-          class="input"
-          type="text"
-          name="phone"
-          placeholder="Veuillez saisir votre numéro de téléph"
-        />
-        <span class="icon is-small is-left">
-          <i class="fas fa-phone"></i>
-        </span>
-      </div>
-    </div> -->
 
       <div class="field">
         <label for="password" class="label">Mot de passe</label>
@@ -65,7 +50,9 @@
             class="input"
             type="password"
             name="password"
-            placeholder="Veuillez créer votre mot de passe"
+            placeholder="Veuillez créer votre mot de passe (8 caractères minimum)"
+            minlength="8"
+            required
           />
           <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
@@ -92,7 +79,7 @@
         </div>
       </div>
     </form>
-    <!-- Add the success message -->
+    <!-- Success Message -->
     <div v-if="successMessage" class="notification is-success">
       {{ successMessage }}
       <div class="control">
@@ -103,13 +90,11 @@
         >
           <span class="icon">
             <i class="fas fa-arrow-left"></i>
-            <!-- Font Awesome arrow icon -->
           </span>
           <span>Retour</span>
         </button>
       </div>
     </div>
-    <!-- End of success message -->
   </div>
   <Footer />
 </template>
@@ -129,10 +114,27 @@ const user = ref({
   password: "",
 });
 const loader = ref(false);
-// Add a ref for the success message
 const successMessage = ref("");
 
+const validateInput = () => {
+  if (!user.value.name.trim()) {
+    alert("Le champ 'Nom' est requis.");
+    return false;
+  }
+  if (!user.value.email.match(/^\S+@\S+\.\S+$/)) {
+    alert("Veuillez entrer une adresse email valide.");
+    return false;
+  }
+  if (user.value.password.length < 8) {
+    alert("Le mot de passe doit contenir au moins 8 caractères.");
+    return false;
+  }
+  return true;
+};
+
 const registerUser = async () => {
+  if (!validateInput()) return;
+
   loader.value = true;
 
   try {
@@ -142,26 +144,36 @@ const registerUser = async () => {
       password: user.value.password,
     });
 
-    if (response.status === 200 || response.status === 201) {
-      successMessage.value =
-        /* "Inscription réussie ! Veuillez consulter vos mails pour vous connecter, vérifiez également vos spams."; */
-        "Inscription réussie !";
+    if (response.status === 201) {
+      // Récupération du token et des informations utilisateur
+      const { token, user: userData } = response.data;
 
-      // Stocker les données utilisateur dans sessionStorage
-      sessionStorage.setItem("user-name", response.data.name);
-      sessionStorage.setItem("user-email", response.data.email);
+      // Stocker le token et les données utilisateur dans sessionStorage
+      sessionStorage.setItem("auth-token", token);
+      sessionStorage.setItem("user-name", userData.name);
+      sessionStorage.setItem("user-email", userData.email);
 
-      console.log("Utilisateur enregistré :", response.data);
+      successMessage.value = "Inscription réussie et connexion automatique !";
+
+      // Redirection vers le tableau de bord
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 2000);
     } else {
       console.log("Erreur d'envoi de formulaire");
     }
   } catch (error) {
     console.error(error);
+    if (error.response?.status === 400) {
+      alert("Email déjà utilisé.");
+    } else {
+      alert("Une erreur est survenue, veuillez réessayer.");
+    }
   } finally {
     loader.value = false;
   }
 };
-// Function to navigate back to the home page
+
 const goHome = () => {
   router.push("/");
 };
