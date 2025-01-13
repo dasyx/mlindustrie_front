@@ -127,6 +127,7 @@ const checkUserStatus = async () => {
 
 // Afficher la confirmation de suppression
 const deleteAccount = () => {
+  console.log("deleteAccount appelé"); // Vérification du clic
   showModal.value = true;
 };
 
@@ -137,10 +138,11 @@ const cancelDelete = () => {
 
 // Confirmer la suppression
 const confirmDelete = async () => {
+  console.log("confirmDelete appelé"); // Vérification
   const token = sessionStorage.getItem("user-token");
   if (token) {
     try {
-      await axios.delete(`${store.api_host}/user/${userId.value}`, {
+      await axios.delete(`${apiBaseUrl}/user/${userId.value}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Votre compte a été supprimé avec succès.");
