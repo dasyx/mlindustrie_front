@@ -2,7 +2,7 @@
   <header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a id="animateLogo" class="navbar-item" @load="swingOnLoad" href="/">
+        <a id="animateLogo" class="navbar-item" onload="swingOnLoad()" href="/">
           <img
             src="../../public/logos/logo_mlindustrie.webp"
             alt="logo_mlindustrie"
@@ -18,7 +18,7 @@
           id="burger"
           role="button"
           class="navbar-burger"
-          :class="{ 'is-active': active }"
+          :class="active ? 'is-active' : ''"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarHeader"
@@ -33,7 +33,7 @@
       <div
         id="navbarHeader"
         class="navbar-menu"
-        :class="{ 'is-active': active }"
+        :class="active ? 'is-active' : ''"
       >
         <div class="navbar-start">
           <a
@@ -41,9 +41,66 @@
             :key="presentation.name"
             class="navbar-item hoverEffect"
             :href="presentation.url"
+            presentation
           >
             {{ presentation.name }}
           </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="#navbarHeader">Plus</a>
+
+            <div class="navbar-dropdown">
+              <router-link
+                v-if="userIsLogged"
+                to="/formation"
+                class="navbar-item hoverEffect"
+                >Programme de formation</router-link
+              >
+              <router-link to="/certification" class="navbar-item hoverEffect"
+                >Certifications</router-link
+              >
+              <router-link to="/qualite" class="navbar-item hoverEffect"
+                >Qualité</router-link
+              >
+
+              <!-- Liens de téléchargements conditionnels pour "cartographie tarifs" et "tarifs" -->
+              <a
+                v-if="userIsLogged"
+                class="navbar-item hoverEffect"
+                href="tarifs/cartographie_tarifs.pdf"
+                download
+              >
+                Cartographie tarifs
+              </a>
+              <a
+                v-if="userIsLogged"
+                class="navbar-item hoverEffect"
+                href="tarifs/tarifs_REG_2024.pdf"
+                download
+              >
+                Tarifs
+              </a>
+
+              <!-- Autres liens de téléchargement -->
+              <a
+                v-for="download in filteredDownloads"
+                :key="download.name"
+                class="navbar-item hoverEffect"
+                :href="download.url"
+                download
+              >
+                {{ download.name }}
+              </a>
+
+              <a
+                class="navbar-item hoverEffect"
+                href="https://www.ouformer.com/organisme-de-formation/ML-Industrie"
+                target="_blank"
+                >Calendrier Inter</a
+              >
+              <hr class="navbar-divider" />
+              <a class="navbar-item" href="#footer">En savoir plus</a>
+            </div>
+          </div>
         </div>
 
         <div class="navbar-end">
@@ -56,6 +113,9 @@
             </div>
             <div v-else class="user-controls">
               <span v-if="user">Bonjour {{ user.name }}</span>
+              <a class="navbar-item navbar-item_contact" href="/contact">
+                <i class="fas fa-envelope"></i><span>contact</span>
+              </a>
               <div class="button-group">
                 <button class="button is-light" @click="logoutUser">
                   Se déconnecter
@@ -68,8 +128,8 @@
           </div>
         </div>
 
-        <div v-if="showModal" class="modal is-active">
-          <div class="modal-background" @click="cancelDelete"></div>
+        <div v-if="showModal" class="modal">
+          <div class="modal-background"></div>
           <div class="modal-content">
             <p>
               Vous êtes sur le point de supprimer votre compte utilisateur.
