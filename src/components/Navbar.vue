@@ -170,10 +170,10 @@ const userId = useStorage("user-id", null, sessionStorage);
 
 // Vérifier le statut de l'utilisateur
 const checkUserStatus = async () => {
-  const id = sessionStorage.getItem("user-id");
+  const token = sessionStorage.getItem("user-id");
   userIsLogged.value = !!token;
 
-  if (id) {
+  if (token) {
     const storedUserId = sessionStorage.getItem("user-id");
 
     if (!storedUserId) {
