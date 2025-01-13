@@ -220,7 +220,6 @@ const confirmDelete = () => {
 // Déconnexion de l'utilisateur
 const logoutUser = () => {
   sessionStorage.removeItem("user-token");
-  sessionStorage.removeItem("user-id");
   userIsLogged.value = false;
   location.reload();
 };
