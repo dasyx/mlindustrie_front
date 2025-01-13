@@ -41,7 +41,6 @@
             :key="presentation.name"
             class="navbar-item hoverEffect"
             :href="presentation.url"
-            presentation
           >
             {{ presentation.name }}
           </a>
@@ -107,7 +106,7 @@
               <a class="button is-light" href="/login">Se connecter</a>
             </div>
             <div v-else class="user-controls">
-              <span v-if="user">Bonjour {{ user.name }}</span>
+              <span>Bonjour {{ userName }}</span>
               <a class="navbar-item navbar-item_contact" href="/contact">
                 <i class="fas fa-envelope"></i><span>contact</span>
               </a>
@@ -142,78 +141,38 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed, watchEffect } from "vue";
-import { useStore } from "vuex";
+import { ref, onMounted, computed } from "vue";
 import axios from "axios";
 import { useStorage } from "@vueuse/core";
 
 const userIsLogged = ref(false);
-const user = ref(null);
 const active = ref(false);
 const showModal = ref(false);
-const store = useStore();
-const userToken = useStorage("user-token", null, sessionStorage);
-const userId = useStorage("user-id", null, sessionStorage);
+const userName = useStorage("user-name", "Invité", sessionStorage); // Stockage du nom de l'utilisateur
+
 const presentations = ref([{ name: "presentation", url: "/ml_plaquette.pdf" }]);
 const downloads = ref([{ name: "cnil", url: "/cnil.pdf" }]);
 const filteredDownloads = computed(() => downloads.value);
 
-const checkUserStatus = async () => {
+const deleteAccount = async () => {
   const token = sessionStorage.getItem("user-token");
   if (token) {
     try {
-      const response = await axios.get(
-        `${store.api_host}/user/${userId.value}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      user.value = response.data;
-      console.log("Données utilisateur récupérées :", user.value);
-    } catch (error) {
-      console.error(
-        "Erreur lors de la récupération des données utilisateur :",
-        error
-      );
-      sessionStorage.removeItem("user-token");
-    }
-  }
-};
-
-const deleteAccount = () => {
-  showModal.value = true;
-  console.log("Suppression de compte demandée");
-};
-
-const cancelDelete = () => {
-  showModal.value = false;
-};
-
-const confirmDelete = async () => {
-  const token = sessionStorage.getItem("user-token");
-  if (token) {
-    try {
-      await axios.delete(`${store.api_host}/user/${userId.value}`, {
+      await axios.delete(`/api/user`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log("Compte utilisateur supprimé avec succès");
       logoutUser();
     } catch (error) {
       console.error("Erreur lors de la suppression du compte :", error);
     }
   }
-  showModal.value = false;
 };
 
 const logoutUser = () => {
   sessionStorage.removeItem("user-token");
+  sessionStorage.removeItem("user-name");
   userIsLogged.value = false;
   location.reload();
-};
-
-const swingOnLoad = () => {
-  const element = document.getElementById("animateLogo");
-  element?.classList.add("swing");
 };
 
 const showMobileMenu = () => {
@@ -221,11 +180,11 @@ const showMobileMenu = () => {
 };
 
 onMounted(() => {
-  checkUserStatus();
-  swingOnLoad();
-});
-
-watchEffect(() => {
-  userIsLogged.value = !!userToken.value && !!user.value;
+  const token = sessionStorage.getItem("user-token");
+  userIsLogged.value = !!token && userName.value !== "Invité";
 });
 </script>
+
+<style scoped>
+/* Ajoutez vos styles ici */
+</style>

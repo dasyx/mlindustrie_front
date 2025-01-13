@@ -136,27 +136,27 @@ const registerUser = async () => {
   loader.value = true;
 
   try {
-    const response = await axios.post(
-      store.api_host + "/user/signup/",
-      {
-        name: user.value.name,
-        email: user.value.email,
-        password: user.value.password,
-      },
-      {}
-    );
+    const response = await axios.post(store.api_host + "/user/signup/", {
+      name: user.value.name,
+      email: user.value.email,
+      password: user.value.password,
+    });
 
     if (response.status === 200 || response.status === 201) {
-      // Set the success message to inform the user
       successMessage.value =
-        "Inscription réussie ! Veuillez consulter vos mails pour vous connecter, vérifiez également vos spams.";
+        /* "Inscription réussie ! Veuillez consulter vos mails pour vous connecter, vérifiez également vos spams."; */
+        "Inscription réussie !";
 
-      console.log(response);
+      // Stocker les données utilisateur dans sessionStorage
+      sessionStorage.setItem("user-name", response.data.name);
+      sessionStorage.setItem("user-email", response.data.email);
+
+      console.log("Utilisateur enregistré :", response.data);
     } else {
       console.log("Erreur d'envoi de formulaire");
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   } finally {
     loader.value = false;
   }
