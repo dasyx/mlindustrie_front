@@ -173,7 +173,7 @@ const checkUserStatus = () => {
   const token = sessionStorage.getItem("user-token");
   if (token) {
     axios
-      .get(`${store.api_localhost}/user/${userId.value}`, {
+      .get(`${store.api_host}/user/${userId.value}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -197,7 +197,7 @@ const confirmDelete = () => {
   const token = sessionStorage.getItem("user-token");
   if (token) {
     axios
-      .delete(`${store.api_localhost}/user/${userId.value}`, {
+      .delete(`${store.api_host}/user/${userId.value}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
