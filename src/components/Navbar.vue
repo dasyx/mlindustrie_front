@@ -191,11 +191,14 @@ const checkUserStatus = async () => {
       );
 
       // Assurez-vous que `userName` est correctement mis à jour
-      if (response.data.name) {
-        userName.value = response.data.name;
+      if (response.data.user && response.data.user.name) {
+        userName.value = response.data.user.name;
         console.log("Nom d'utilisateur récupéré :", userName.value);
       } else {
-        console.warn("Nom d'utilisateur non trouvé dans la réponse");
+        console.warn(
+          "Nom d'utilisateur non trouvé dans la réponse :",
+          response.data
+        );
         userName.value = "Invité";
       }
     } catch (error) {
