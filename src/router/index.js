@@ -5,7 +5,8 @@ import Programme from "../views/Programme.vue";
 import Contact from "../views/Contact.vue";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import Signup from "../components/Signup.vue";
+//import Signup from "../components/Signup.vue";
+import Signup from "../components/SignupNoMail.vue";
 import Login from "../components/Login.vue";
 import Qualite from "../components/Qualite.vue";
 import Formation from "../components/Formation.vue";
@@ -15,6 +16,7 @@ import Maintenance from "../components/Maintenance.vue";
 import Certification from "../views/Certification.vue";
 import Confirmation from "../components/Confirmation.vue";
 import Legals from "../views/Legals.vue";
+import SignupNoMail from "../components/SignupNoMail.vue";
 
 const routes = [
   {
@@ -60,7 +62,7 @@ const routes = [
   {
     path: "/signup",
     name: "Signup",
-    component: Signup,
+    component: SignupNoMail,
   },
   {
     path: "/login",

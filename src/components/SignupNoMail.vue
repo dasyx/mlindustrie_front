@@ -39,23 +39,6 @@
         </div>
       </div>
 
-      <!-- <div class="field">
-      <label for="phone" class="label">Téléphone</label>
-      <div class="control has-icons-left has-icons-right">
-        <input
-          id="phone"
-          v-model="user.phone"
-          class="input"
-          type="text"
-          name="phone"
-          placeholder="Veuillez saisir votre numéro de téléph"
-        />
-        <span class="icon is-small is-left">
-          <i class="fas fa-phone"></i>
-        </span>
-      </div>
-    </div> -->
-
       <div class="field">
         <label for="password" class="label">Mot de passe</label>
         <div class="control has-icons-left has-icons-right">
@@ -103,7 +86,6 @@
         >
           <span class="icon">
             <i class="fas fa-arrow-left"></i>
-            <!-- Font Awesome arrow icon -->
           </span>
           <span>Retour</span>
         </button>
@@ -129,7 +111,6 @@ const user = ref({
   password: "",
 });
 const loader = ref(false);
-// Add a ref for the success message
 const successMessage = ref("");
 
 const registerUser = async () => {
@@ -147,9 +128,9 @@ const registerUser = async () => {
     );
 
     if (response.status === 200 || response.status === 201) {
-      // Set the success message to inform the user
+      // Update success message
       successMessage.value =
-        "Inscription réussie ! Veuillez consulter vos mails pour vous connecter, vérifiez également vos spams.";
+        "Inscription réussie ! Vous pouvez maintenant vous connecter.";
 
       console.log(response);
     } else {
@@ -161,7 +142,7 @@ const registerUser = async () => {
     loader.value = false;
   }
 };
-// Function to navigate back to the home page
+
 const goHome = () => {
   router.push("/");
 };
