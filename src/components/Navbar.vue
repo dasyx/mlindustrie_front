@@ -108,7 +108,7 @@ const checkUserStatus = async () => {
   if (token) {
     try {
       const response = await axios.get(
-        `${store.api_host}/user/${userId.value}`,
+        `${store.api_localhost}/user/${userId.value}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
