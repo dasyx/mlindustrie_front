@@ -74,7 +74,7 @@
               <a
                 v-if="userIsLogged"
                 class="navbar-item hoverEffect"
-                href="tarifs/tarifs_REG_2024.pdf"
+                href="tarifs/tarifs_REG_2025.pdf"
                 download
               >
                 Tarifs

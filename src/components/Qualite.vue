@@ -248,7 +248,6 @@ export default {
 }
 .title {
   margin: 0 auto;
-  padding: 1rem;
   margin: 1.5em 0;
 }
 .container {
