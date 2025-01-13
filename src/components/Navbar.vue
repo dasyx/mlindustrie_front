@@ -164,25 +164,19 @@ const userId = useStorage("user-id", null, sessionStorage);
 const showModal = ref(false);
 
 // Vérifier le statut de l'utilisateur
-const checkUserStatus = async () => {
+const checkUserStatus = () => {
   const token = sessionStorage.getItem("user-token");
   if (token) {
-    try {
-      const response = await axios.get(
-        `${store.api_localhost}/user/${userId.value}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      user.value = response.data;
-      userIsLogged.value = true;
-    } catch (error) {
-      console.error(
-        "Erreur lors de la vérification du statut utilisateur :",
-        error
-      );
-      sessionStorage.removeItem("user-token");
-    }
+    axios
+      .get(`${store.api_localhost}/user/${userId.value}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        user.value = response.data;
+      })
+      .catch(() => {
+        sessionStorage.removeItem("user-token");
+      });
   }
 };
 
@@ -203,7 +197,7 @@ const confirmDelete = () => {
   const token = sessionStorage.getItem("user-token");
   if (token) {
     axios
-      .delete(`${store.api_host}/user/${userId.value}`, {
+      .delete(`${store.api_localhost}/user/${userId.value}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
