@@ -149,7 +149,7 @@ import { useStorage } from "@vueuse/core";
 // État utilisateur
 const userIsLogged = ref(false);
 const user = ref({});
-const userName = useStorage("user-name", "Invité", sessionStorage); // Stockage du nom de l'utilisateur
+const userName = useStorage("user-name", null, sessionStorage); // Stockage du nom de l'utilisateur
 const societe = ref("ML INDUSTRIE");
 const titre = ref("Des formations fiables et efficaces");
 const active = ref(false);
@@ -170,10 +170,10 @@ const userId = useStorage("user-id", null, sessionStorage);
 
 // Vérifier le statut de l'utilisateur
 const checkUserStatus = async () => {
-  const token = sessionStorage.getItem("user-token");
+  const id = sessionStorage.getItem("user-id");
   userIsLogged.value = !!token;
 
-  if (token) {
+  if (id) {
     const storedUserId = sessionStorage.getItem("user-id");
 
     if (!storedUserId) {

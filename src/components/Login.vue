@@ -79,6 +79,7 @@ const router = useRouter();
 const user = ref({
   email: "",
   password: "",
+  name: "",
 });
 const loader = ref(false);
 
