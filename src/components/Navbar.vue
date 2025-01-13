@@ -61,8 +61,6 @@
               <router-link to="/qualite" class="navbar-item hoverEffect"
                 >Qualité</router-link
               >
-
-              <!-- Liens de téléchargements conditionnels pour "cartographie tarifs" et "tarifs" -->
               <a
                 v-if="userIsLogged"
                 class="navbar-item hoverEffect"
@@ -79,8 +77,6 @@
               >
                 Tarifs
               </a>
-
-              <!-- Autres liens de téléchargement -->
               <a
                 v-for="download in filteredDownloads"
                 :key="download.name"
@@ -90,7 +86,6 @@
               >
                 {{ download.name }}
               </a>
-
               <a
                 class="navbar-item hoverEffect"
                 href="https://www.ouformer.com/organisme-de-formation/ML-Industrie"
@@ -153,59 +148,59 @@ import axios from "axios";
 import { useStorage } from "@vueuse/core";
 
 const userIsLogged = ref(false);
-const user = ref("");
-const societe = ref("ML INDUSTRIE");
-const titre = ref("Des formations fiables et efficaces");
+const user = ref(null);
 const active = ref(false);
-const windowDimensions = ref({ width: 0, height: 0 });
-const presentations = ref([{ name: "presentation", url: "/ml_plaquette.pdf" }]);
-
-// Exclusion des téléchargements "cartographie tarifs" et "tarifs"
-const downloads = ref([{ name: "cnil", url: "/cnil.pdf" }]);
-
-const filteredDownloads = computed(() => downloads.value);
+const showModal = ref(false);
 const store = useStore();
 const userToken = useStorage("user-token", null, sessionStorage);
 const userId = useStorage("user-id", null, sessionStorage);
-const showModal = ref(false);
+const presentations = ref([{ name: "presentation", url: "/ml_plaquette.pdf" }]);
+const downloads = ref([{ name: "cnil", url: "/cnil.pdf" }]);
+const filteredDownloads = computed(() => downloads.value);
 
-const checkUserStatus = () => {
+const checkUserStatus = async () => {
   const token = sessionStorage.getItem("user-token");
   if (token) {
-    axios
-      .get(`${store.api_host}/user/${userId.value}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        user.value = response.data;
-      })
-      .catch(() => {
-        sessionStorage.removeItem("user-token");
-      });
+    try {
+      const response = await axios.get(
+        `${store.api_host}/user/${userId.value}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      user.value = response.data;
+      console.log("Données utilisateur récupérées :", user.value);
+    } catch (error) {
+      console.error(
+        "Erreur lors de la récupération des données utilisateur :",
+        error
+      );
+      sessionStorage.removeItem("user-token");
+    }
   }
 };
 
 const deleteAccount = () => {
   showModal.value = true;
+  console.log("Suppression de compte demandée");
 };
 
 const cancelDelete = () => {
   showModal.value = false;
 };
 
-const confirmDelete = () => {
+const confirmDelete = async () => {
   const token = sessionStorage.getItem("user-token");
   if (token) {
-    axios
-      .delete(`${store.api_host}/user/${userId.value}`, {
+    try {
+      await axios.delete(`${store.api_host}/user/${userId.value}`, {
         headers: { Authorization: `Bearer ${token}` },
-      })
-      .then(() => {
-        logoutUser();
-      })
-      .catch((error) => {
-        console.log(error);
       });
+      console.log("Compte utilisateur supprimé avec succès");
+      logoutUser();
+    } catch (error) {
+      console.error("Erreur lors de la suppression du compte :", error);
+    }
   }
   showModal.value = false;
 };
@@ -216,16 +211,9 @@ const logoutUser = () => {
   location.reload();
 };
 
-const handleResize = () => {
-  if (window) {
-    windowDimensions.value.width = window.innerWidth;
-    windowDimensions.value.height = window.innerHeight;
-  }
-};
-
 const swingOnLoad = () => {
   const element = document.getElementById("animateLogo");
-  element.classList.add("swing");
+  element?.classList.add("swing");
 };
 
 const showMobileMenu = () => {
@@ -234,16 +222,10 @@ const showMobileMenu = () => {
 
 onMounted(() => {
   checkUserStatus();
-  window.addEventListener("resize", handleResize);
-  handleResize();
   swingOnLoad();
 });
 
-onUnmounted(() => {
-  window.removeEventListener("resize", handleResize);
-});
-
 watchEffect(() => {
-  userIsLogged.value = !!userToken.value;
+  userIsLogged.value = !!userToken.value && !!user.value;
 });
 </script>
