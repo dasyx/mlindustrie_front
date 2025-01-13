@@ -160,16 +160,16 @@
             {{ firstParagraph_pt1 }}<span>2019</span>{{ firstParagraph_pt2 }}
           </h2>
           <h2 id="secondParagraph">
-            {{ secondParagraph_pt1 }}<span>30</span>{{ secondParagraph_pt2 }}
+            {{ secondParagraph_pt1 }}<span>70</span>{{ secondParagraph_pt2 }}
           </h2>
           <h2 id="thirdParagraph">
-            {{ thirdParagraph_pt1 }}<span>50</span>{{ thirdParagraph_pt2
+            {{ thirdParagraph_pt1 }}<span>166</span>{{ thirdParagraph_pt2
             }}<span>1227</span>{{ thirdParagraph_pt3 }}{{ thirdParagraph_pt4 }}
           </h2>
-          <h2 id="fourthParagraph">{{ fourthParagraph }}<span>86%.</span></h2>
+          <h2 id="fourthParagraph">{{ fourthParagraph }}<span>94%.</span></h2>
           <h2 id="fifthParagraph">{{ fifthParagraph }}<span>99%.</span></h2>
           <h2 id="sixthParagraph">
-            {{ sixthParagraph_pt1 }}<span>478</span>{{ sixthParagraph_pt2 }}
+            {{ sixthParagraph_pt1 }}<span>350</span>{{ sixthParagraph_pt2 }}
           </h2>
           <span>ML INDUSTRIE</span> est certifiée Qualiopi
         </div>
@@ -550,7 +550,7 @@ export default {
       }, 800);
       setTimeout(function () {
         v.firstParagraph_pt2 =
-          " et est implantée actuellement sur les régions rouennaise et lyonnaise.";
+          " et est implantée actuellement sur la région rouennaise";
       }, 800);
       setTimeout(function () {
         v.secondParagraph_pt1 = "La société collabore avec ";
@@ -579,7 +579,8 @@ export default {
         v.sixthParagraph_pt1 = "Avec au total plus de ";
       }, 2200);
       setTimeout(function () {
-        v.sixthParagraph_pt2 = " jours de formations.";
+        v.sixthParagraph_pt2 =
+          " jours de formations. Le délai d'accès à nos formations est de 1 semaine.";
       }, 2200);
     },
   },

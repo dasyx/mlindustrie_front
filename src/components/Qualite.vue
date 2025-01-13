@@ -50,17 +50,17 @@ export default {
       files: [
         {
           name: "Process Inscription",
-          url: "/qualite/2 - Process inscription.pdf",
+          url: "/qualite/2 - Process inscription ok mat.pdf",
           backgroundImage: "/images/1.png",
         },
         {
           name: "Process Formation",
-          url: "/qualite/3 - Process formation.pdf",
+          url: "/qualite/3 - Process formation ok mat.pdf",
           backgroundImage: "/images/2.png",
         },
         {
           name: "Critère 1 - CGV",
-          url: "/qualite/Critère 1 - CGV.pdf",
+          url: "/qualite/Critère 1 - CGV Ok.pdf",
           backgroundImage: "/images/3.png",
         },
         {
@@ -79,33 +79,33 @@ export default {
           backgroundImage: "/images/6.png",
         },
         {
-          name: "Critère 2 - Accueil des étudiants en situation de handicap - bilan",
-          url: "/qualite/Critère 2 - Accueil des étudiants en situation de handicap - bilan.pdf",
+          name: "Critère 2 - Accueil des stagiaires en situation de handicap - bilan",
+          url: "/qualite/Critère 2 - Accueil des stagiaires en situation de handicap - bilan.pdf",
           backgroundImage: "/images/7.png",
         },
         {
-          name: "Critère 2 - Accueil des étudiants en situation de handicap - entretien",
-          url: "/qualite/Critère 2 - Accueil des étudiants en situation de handicap - entretien.pdf",
+          name: "Critère 2 - Accueil des stagiaires en situation de handicap - entretien",
+          url: "/qualite/Critère 2 - Accueil des stagiaires en situation de handicap - entretien.pdf",
           backgroundImage: "/images/8.png",
         },
         {
-          name: "Critère 2 - Accueil des étudiants en situation de handicap - formalisation",
-          url: "/qualite/Critère 2 - Accueil des étudiants en situation de handicap - formalisation.pdf",
+          name: "Critère 2 - Accueil des stagiaires en situation de handicap - formalisation",
+          url: "/qualite/Critère 2 - Accueil des stagiaires en situation de handicap - formalisation ok.pdf",
           backgroundImage: "/images/9.png",
         },
         {
           name: "Critère 2 - Adaptation de l'accompagnement",
-          url: "/qualite/Critère 2 - Adaptation de l'accompagnement.pdf",
+          url: "/qualite/Critère 2 - Adaptation de l'accompagnement ok.pdf",
           backgroundImage: "/images/10.png",
         },
         {
           name: "Critère 2 - Analyse du besoin du bénéficiaire",
-          url: "/qualite/Critère 2 - Analyse du besoin du bénéficiaire.pdf",
+          url: "/qualite/Critère 2 - Analyse du besoin du bénéficiaire ok.pdf",
           backgroundImage: "/images/11.png",
         },
         {
           name: "Critère 2 - Dossier de candidature",
-          url: "/qualite/Critère 2 - Dossier de candidature.pdf",
+          url: "/qualite/Critère 2 - Dossier de candidature ok.pdf",
           backgroundImage: "/images/12.png",
         },
         {
@@ -120,17 +120,17 @@ export default {
         },
         {
           name: "Critère 2 - Modalités pédagogiques",
-          url: "/qualite/Critère 2 - Modalités pédagogiques.pdf",
+          url: "/qualite/Critère 2 - Modalités pédagogiques ok.pdf",
           backgroundImage: "/images/15.png",
         },
         {
           name: "Critère 2 - Règlement général",
-          url: "/qualite/Critère 2 - Règlement général.pdf",
+          url: "/qualite/Critère 2 - Règlement général ok.pdf",
           backgroundImage: "/images/16.png",
         },
         {
           name: "Critère 3 - Annuaire des contacts",
-          url: "/qualite/Critère 3 - Annuaire des contacts.pdf",
+          url: "/qualite/Critère 3 - Annuaire des contacts ok.pdf",
           backgroundImage: "/images/17.png",
         },
         {
@@ -160,12 +160,12 @@ export default {
         },
         {
           name: "Critère 3 - Livret d'accueil",
-          url: "/qualite/Critère 3 - Livret d'accueil.pdf",
+          url: "/qualite/Critère 3 - Livret d'accueil ok.pdf",
           backgroundImage: "/images/23.png",
         },
         {
           name: "Critère 3 - Règlement intérieur",
-          url: "/qualite/Critère 3 - Règlement intérieur.pdf",
+          url: "/qualite/Critère 3 - Règlement intérieur ok.pdf",
           backgroundImage: "/images/24.png",
         },
         {
@@ -175,12 +175,12 @@ export default {
         },
         {
           name: "Critère 4 - Les différents pôles",
-          url: "/qualite/Critère 4 - Les différents pôles.pdf",
+          url: "/qualite/Critère 4 - Les différents pôles ok.pdf",
           backgroundImage: "/images/26.png",
         },
         {
           name: "Critère 4 - Organigramme",
-          url: "/qualite/Critère 4 - Organigramme.pdf",
+          url: "/qualite/Critère 4 - Organigramme ok.pdf",
           backgroundImage: "/images/27.png",
         },
         {
