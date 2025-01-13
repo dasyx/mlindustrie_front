@@ -108,7 +108,7 @@ const checkUserStatus = async () => {
   if (token) {
     try {
       const response = await axios.get(
-        `${store.api_localhost}/user/${userId.value}`,
+        `${store.api_host}/user/${userId.value}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -143,7 +143,7 @@ const confirmDelete = async () => {
   const token = sessionStorage.getItem("user-token");
   if (token) {
     try {
-      await axios.delete(`${store.api_localhost}/user/${userId.value}`, {
+      await axios.delete(`${store.api_host}/user/${userId.value}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Votre compte a été supprimé avec succès.");
@@ -189,3 +189,56 @@ watchEffect(() => {
   userIsLogged.value = !!userToken.value;
 });
 </script>
+
+<style scoped>
+/* Style par défaut pour les petits écrans */
+.user-controls {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Media query pour les écrans de plus de 768px */
+@media screen and (min-width: 768px) {
+  .user-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; /* Changez à flex-start pour aligner à gauche */
+  }
+
+  .user-controls > * {
+    margin-right: 20px; /* Espacement entre les éléments */
+  }
+
+  .button-group {
+    display: flex;
+    gap: 10px; /* Contrôle l'espacement entre les boutons */
+    margin-left: 20px;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Griser l'arrière-plan */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+.modal-content p {
+  margin-bottom: 20px;
+}
+.modal-content button {
+  margin: 0 10px;
+}
+</style>
