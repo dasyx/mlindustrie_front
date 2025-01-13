@@ -175,6 +175,7 @@ const showMobileMenu = () => {
 
 // Lifecycle hooks
 onMounted(() => {
+  console.log("Navbar chargé"); // Vérification
   checkUserStatus();
   window.addEventListener("resize", handleResize);
 });
