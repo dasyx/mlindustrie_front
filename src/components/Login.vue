@@ -70,65 +70,51 @@ import { ref } from "vue";
 import axios from "axios";
 import store from "../modules/store.json";
 import { useRouter } from "vue-router";
-import { useStorage } from "@vueuse/core"; // Assurez-vous que @vueuse/core est installé
+import { useStorage } from "@vueuse/core"; // s'assurer d'avoir @vueuse/core installé
 import Navbar from "./Navbar.vue";
 import Footer from "./Footer.vue";
 
-// Déclarations des références et constantes
 const router = useRouter();
 const user = ref({
   email: "",
   password: "",
-  name: "",
 });
 const loader = ref(false);
 
-// Stockage des données utilisateur
+// Remplacer cela par vos clés de stockage réelles et structure de données
 const userToken = useStorage("user-token", null, sessionStorage);
 const userId = useStorage("user-id", null, sessionStorage);
-const userName = useStorage("user-name", null, sessionStorage); // Pour stocker le nom de l'utilisateur
 
-// Fonction pour gérer la connexion
 const registerUser = async () => {
   loader.value = true;
 
   try {
-    // Envoi des informations de connexion
-    const response = await axios.post(store.api_host + "/user/login/", {
+    const response = await axios.post(store.api_host + "/user/login", {
       email: user.value.email,
       password: user.value.password,
     });
 
     if (response.status === 200 || response.status === 201) {
-      // Stocker les données utilisateur en cas de succès
-      userToken.value = response.data.token || ""; // Stocker le token
-      userId.value = response.data.id || ""; // Stocker l'ID
-      userName.value = response.data.name || ""; // Stocker le nom de l'utilisateur
+      console.log("Storing User Data:", response.data); // Ensure data is present
 
-      console.log("Connexion réussie !");
-      console.log("Token :", userToken.value);
-      console.log("Nom de l'utilisateur :", userName.value);
+      userToken.value = response.data.token || ""; // Ensure fallback
+      userId.value = response.data.id || ""; // Ensure fallback
 
-      // Rediriger vers la page d'accueil ou une autre route
+      console.log("Stored Token:", userToken.value); // Verify storage
+      console.log("Stored User ID:", userId.value); // Verify storage
+
       router.push({ name: "Home" });
     } else {
-      console.error("Erreur de connexion : Réponse inattendue");
+      console.log("Erreur d'envoi de formulaire");
     }
   } catch (error) {
-    console.error("Erreur de connexion :", error);
+    console.log(error);
   } finally {
     loader.value = false;
   }
 };
 
-// Fonction pour revenir à la page d'accueil
 const goHome = () => {
   router.push("/");
 };
 </script>
-
-<style scoped>
-.notification {
-  display: flex;
-}
-</style>
