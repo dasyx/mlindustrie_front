@@ -68,7 +68,7 @@
           </div>
         </div>
 
-        <div v-if="showModal" class="modal">
+        <div v-if="showModal" class="modal is-active">
           <div class="modal-background" @click="cancelDelete"></div>
           <div class="modal-content">
             <p>
@@ -129,6 +129,7 @@ const checkUserStatus = async () => {
 const deleteAccount = () => {
   console.log("deleteAccount appelé"); // Vérification du clic
   showModal.value = true;
+  console.log("showModal:", showModal.value); // Vérification
 };
 
 // Annuler la suppression
