@@ -93,7 +93,7 @@ const registerUser = async () => {
 
   try {
     // Envoi des informations de connexion
-    const response = await axios.post(store.api_host + "/user/login", {
+    const response = await axios.post(store.api_host + "/user/login/", {
       email: user.value.email,
       password: user.value.password,
     });
@@ -104,7 +104,7 @@ const registerUser = async () => {
       userId.value = response.data.id || ""; // Stocker l'ID
       userName.value = response.data.name || ""; // Stocker le nom de l'utilisateur
 
-      console.log("Connexion réussie :");
+      console.log("Connexion réussie !");
       console.log("Token :", userToken.value);
       console.log("Nom de l'utilisateur :", userName.value);
 

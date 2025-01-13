@@ -141,50 +141,140 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, onUnmounted, computed, watchEffect } from "vue";
+import { useStore } from "vuex";
 import axios from "axios";
 import { useStorage } from "@vueuse/core";
 
+// État utilisateur
 const userIsLogged = ref(false);
+const user = ref({});
+const userName = useStorage("user-name", "Invité", sessionStorage); // Stockage du nom de l'utilisateur
+const societe = ref("ML INDUSTRIE");
+const titre = ref("Des formations fiables et efficaces");
 const active = ref(false);
 const showModal = ref(false);
-const userName = useStorage("user-name", "Invité", sessionStorage); // Stockage du nom de l'utilisateur
 
+// Dimensions de la fenêtre
+const windowDimensions = ref({ width: 0, height: 0 });
+
+// Présentations et téléchargements
 const presentations = ref([{ name: "presentation", url: "/ml_plaquette.pdf" }]);
 const downloads = ref([{ name: "cnil", url: "/cnil.pdf" }]);
 const filteredDownloads = computed(() => downloads.value);
 
-const deleteAccount = async () => {
+// Stockage et token utilisateur
+const store = useStore();
+const userToken = useStorage("user-token", null, sessionStorage);
+const userId = useStorage("user-id", null, sessionStorage);
+
+// Vérifier le statut de l'utilisateur
+const checkUserStatus = () => {
   const token = sessionStorage.getItem("user-token");
+  userIsLogged.value = !!token && userName.value !== "Invité";
+
   if (token) {
-    try {
-      await axios.delete(`/api/user`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      logoutUser();
-    } catch (error) {
-      console.error("Erreur lors de la suppression du compte :", error);
+    if (!userId.value) {
+      console.error("ID utilisateur manquant dans sessionStorage");
+      clearUserSession();
+      return;
     }
+
+    // Requête pour récupérer les informations utilisateur
+    axios
+      .get(`${store.api_host}/user/${userId.value}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        user.value = response.data;
+        userName.value = response.data.name || "Invité"; // Met à jour le nom de l'utilisateur
+      })
+      .catch((error) => {
+        console.error(
+          "Erreur lors de la vérification de l'utilisateur :",
+          error.response?.data || error
+        );
+        clearUserSession(); // Réinitialise la session en cas d'erreur
+      });
+  } else {
+    clearUserSession();
   }
 };
 
-const logoutUser = () => {
+// Réinitialiser la session utilisateur
+const clearUserSession = () => {
   sessionStorage.removeItem("user-token");
-  sessionStorage.removeItem("user-name");
+  sessionStorage.removeItem("user-id");
+  userName.value = "Invité";
   userIsLogged.value = false;
-  location.reload();
 };
 
+// Supprimer un compte utilisateur
+const deleteAccount = () => {
+  showModal.value = true;
+};
+
+const cancelDelete = () => {
+  showModal.value = false;
+};
+
+const confirmDelete = () => {
+  const token = sessionStorage.getItem("user-token");
+  if (token) {
+    axios
+      .delete(`${store.api_host}/user/${userId.value}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(() => {
+        clearUserSession();
+        location.reload(); // Recharge la page après suppression
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la suppression du compte :", error);
+      });
+  }
+  showModal.value = false;
+};
+
+// Déconnexion de l'utilisateur
+const logoutUser = () => {
+  clearUserSession();
+  location.reload(); // Recharge la page après déconnexion
+};
+
+// Gestion de la taille de la fenêtre
+const handleResize = () => {
+  windowDimensions.value.width = window.innerWidth;
+  windowDimensions.value.height = window.innerHeight;
+};
+
+// Animation au chargement
+const swingOnLoad = () => {
+  const element = document.getElementById("animateLogo");
+  if (element) {
+    element.classList.add("swing");
+  }
+};
+
+// Menu mobile
 const showMobileMenu = () => {
   active.value = !active.value;
 };
 
+// Cycle de vie du composant
 onMounted(() => {
-  const token = sessionStorage.getItem("user-token");
-  userIsLogged.value = !!token && userName.value !== "Invité";
+  checkUserStatus();
+  window.addEventListener("resize", handleResize);
+  handleResize();
+  swingOnLoad();
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+});
+
+// Met à jour l'état de connexion lorsque le token change
+watchEffect(() => {
+  userIsLogged.value = !!userToken.value;
 });
 </script>
-
-<style scoped>
-/* Ajoutez vos styles ici */
-</style>
