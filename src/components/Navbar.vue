@@ -143,7 +143,7 @@ const confirmDelete = async () => {
   const token = sessionStorage.getItem("user-token");
   if (token) {
     try {
-      await axios.delete(`${store.api_host}/user/${userId.value}`, {
+      await axios.delete(`${store.api_localhost}/user/${userId.value}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Votre compte a été supprimé avec succès.");
