@@ -150,6 +150,7 @@
 import { ref, onMounted, onUnmounted, computed, watchEffect } from "vue";
 import { useStore } from "vuex";
 import axios from "axios";
+import store from "../modules/store.json";
 import { useStorage } from "@vueuse/core";
 
 // Variables et références
