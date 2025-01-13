@@ -169,33 +169,39 @@ const userToken = useStorage("user-token", null, sessionStorage);
 const userId = useStorage("user-id", null, sessionStorage);
 
 // Vérifier le statut de l'utilisateur
-const checkUserStatus = () => {
+const checkUserStatus = async () => {
   const token = sessionStorage.getItem("user-token");
-  userIsLogged.value = !!token && userName.value !== "Invité";
+  userIsLogged.value = !!token;
 
   if (token) {
-    if (!userId.value) {
+    const storedUserId = sessionStorage.getItem("user-id");
+
+    if (!storedUserId) {
       console.error("ID utilisateur manquant dans sessionStorage");
       clearUserSession();
       return;
     }
 
-    // Requête pour récupérer les informations utilisateur
-    axios
-      .get(`${store.api_host}/user/${userId.value}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        user.value = response.data;
-        userName.value = response.data.name || "Invité"; // Met à jour le nom de l'utilisateur
-      })
-      .catch((error) => {
-        console.error(
-          "Erreur lors de la vérification de l'utilisateur :",
-          error.response?.data || error
-        );
-        clearUserSession(); // Réinitialise la session en cas d'erreur
-      });
+    try {
+      const response = await axios.get(
+        `${store.api_host}/user/${storedUserId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      // Assurez-vous que `userName` est correctement mis à jour
+      if (response.data.name) {
+        userName.value = response.data.name;
+        console.log("Nom d'utilisateur récupéré :", userName.value);
+      } else {
+        console.warn("Nom d'utilisateur non trouvé dans la réponse");
+        userName.value = "Invité";
+      }
+    } catch (error) {
+      console.error("Erreur lors de la vérification de l'utilisateur :", error);
+      clearUserSession();
+    }
   } else {
     clearUserSession();
   }
@@ -276,5 +282,9 @@ onUnmounted(() => {
 // Met à jour l'état de connexion lorsque le token change
 watchEffect(() => {
   userIsLogged.value = !!userToken.value;
+  console.log("Nom mis à jour :", userName.value);
+  if (userName.value === "Invité" && userIsLogged.value) {
+    console.warn("Nom d'utilisateur non propagé correctement.");
+  }
 });
 </script>
