@@ -146,7 +146,7 @@
   </header>
 </template>
 
-<script setup>
+<script>
 import { ref, onMounted, onUnmounted, computed, watchEffect } from "vue";
 import { useStore } from "vuex";
 import axios from "axios";
