@@ -273,7 +273,7 @@ onMounted(() => {
   window.addEventListener("resize", handleResize);
   handleResize();
   swingOnLoad();
-  userName.value = "John Doe"; // Remplacez par une valeur statique
+  //userName.value = "John Doe"; // Remplacez par une valeur statique
 });
 
 onUnmounted(() => {
@@ -283,9 +283,9 @@ onUnmounted(() => {
 // Met à jour l'état de connexion lorsque le token change
 watchEffect(() => {
   userIsLogged.value = !!userToken.value;
-  console.log("Nom mis à jour :", userName.value);
+  /* console.log("Nom mis à jour :", userName.value);
   if (userName.value === "Invité" && userIsLogged.value) {
     console.warn("Nom d'utilisateur non propagé correctement.");
-  }
+  } */
 });
 </script>
