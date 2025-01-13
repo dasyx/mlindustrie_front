@@ -168,7 +168,7 @@ const checkUserStatus = async () => {
   if (token) {
     try {
       const response = await axios.get(
-        `${store.api_host}/user/${userId.value}`,
+        `${store.api_localhost}/user/${userId.value}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -198,20 +198,20 @@ const cancelDelete = () => {
 };
 
 // Confirmer la suppression
-const confirmDelete = async () => {
-  console.log("confirmDelete appelé"); // Vérification
+const confirmDelete = () => {
   const token = sessionStorage.getItem("user-token");
   if (token) {
-    try {
-      await axios.delete(`${store.api_host}/user/${userId.value}`, {
+    axios
+      .delete(`${store.api_host}/user/${userId.value}`, {
         headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response.data);
+        logoutUser();
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      alert("Votre compte a été supprimé avec succès.");
-      logoutUser();
-    } catch (error) {
-      console.error("Erreur lors de la suppression du compte :", error);
-      alert("Une erreur est survenue lors de la suppression du compte.");
-    }
   }
   showModal.value = false;
 };
