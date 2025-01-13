@@ -164,7 +164,7 @@ const presentations = ref([{ name: "presentation", url: "/ml_plaquette.pdf" }]);
 const downloads = ref([{ name: "cnil", url: "/cnil.pdf" }]);
 
 const filteredDownloads = computed(() => downloads.value);
-const store1 = useStore();
+const store = useStore();
 const userToken = useStorage("user-token", null, sessionStorage);
 const userId = useStorage("user-id", null, sessionStorage);
 const showModal = ref(false);
