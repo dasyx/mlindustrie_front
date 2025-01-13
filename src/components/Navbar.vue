@@ -273,6 +273,7 @@ onMounted(() => {
   window.addEventListener("resize", handleResize);
   handleResize();
   swingOnLoad();
+  userName.value = "John Doe"; // Remplacez par une valeur statique
 });
 
 onUnmounted(() => {
