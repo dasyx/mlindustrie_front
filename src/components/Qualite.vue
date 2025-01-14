@@ -248,7 +248,7 @@ export default {
 }
 .title {
   margin: 0 auto;
-  margin: 1.5em 0;
+  margin: 3.5em 0;
 }
 .container {
   display: flex;

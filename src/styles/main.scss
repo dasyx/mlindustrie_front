@@ -82,6 +82,9 @@ h3 {
   position: fixed; /* Rendre la navbar fixe */
   top: 0; /* La positionner en haut */
   width: 100%; /* Occuper toute la largeur de l'écran */
+  @media screen and (max-width: 768px) {
+    position: static;
+  }
 }
 
 .navbar-item {
