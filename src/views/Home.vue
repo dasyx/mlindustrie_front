@@ -171,7 +171,11 @@
           <h2 id="sixthParagraph">
             {{ sixthParagraph_pt1 }}<span>350</span>{{ sixthParagraph_pt2 }}
           </h2>
-          <span>ML INDUSTRIE</span> est certifiée Qualiopi
+          <img
+            src="../../public/img/certification_qualiopi.webp"
+            alt="certification_qualiopi"
+            class="certif_qualiopi"
+          />
         </div>
       </div>
     </div>
@@ -550,7 +554,7 @@ export default {
       }, 800);
       setTimeout(function () {
         v.firstParagraph_pt2 =
-          " et est implantée actuellement sur la région rouennaise";
+          " et est implantée actuellement sur la région rouennaise.";
       }, 800);
       setTimeout(function () {
         v.secondParagraph_pt1 = "La société collabore avec ";
@@ -681,5 +685,19 @@ export default {
     flex: 1 1 100%;
     max-width: 100%;
   }
+  .certif_qualiopi {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .certif_qualiopi {
+    width: 25%;
+    padding-left: 1.5rem;
+  }
+}
+
+.certif_qualiopi {
+  margin-top: 2rem;
 }
 </style>
