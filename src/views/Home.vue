@@ -685,15 +685,18 @@ export default {
     flex: 1 1 100%;
     max-width: 100%;
   }
-  .certif_qualiopi {
-    width: 100%;
-  }
 }
 
-@media (min-width: 1025px) {
-  .certif_qualiopi {
-    width: 25%;
-    padding-left: 1.5rem;
+/* Pleine largeur dès 768px et moins */
+@media (max-width: 768px) {
+  .client_review {
+    flex: 1 1 95%; /* Chaque avis occupe 95% de la largeur */
+    max-width: 95%; /* Garantit que les avis ne débordent pas */
+    margin: 0 auto 1rem auto; /* Centre les avis avec une marge en bas */
+  }
+
+  .client_reviews {
+    gap: 1rem; /* Réduit l'espacement entre les avis */
   }
 }
 

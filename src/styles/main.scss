@@ -246,6 +246,9 @@ h3 {
 }
 .hero-body {
   margin-top: 10rem;
+  @media screen and (max-width: 768px) {
+    margin-top: 1rem;
+  }
 }
 
 .hero-body h1 {
