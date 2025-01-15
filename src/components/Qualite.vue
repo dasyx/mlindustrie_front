@@ -50,12 +50,12 @@ export default {
       files: [
         {
           name: "Process Inscription",
-          url: "/qualite/2 - Process inscription ok mat.pdf",
+          url: "/qualite/2 - Process inscription.pdf",
           backgroundImage: "/images/1.png",
         },
         {
           name: "Process Formation",
-          url: "/qualite/3 - Process formation ok mat.pdf",
+          url: "/qualite/3 - Process formation.pdf",
           backgroundImage: "/images/2.png",
         },
         {
@@ -63,21 +63,21 @@ export default {
           url: "/qualite/Critère 1 - CGV Ok.pdf",
           backgroundImage: "/images/3.png",
         },
-        {
+        /* {
           name: "Critère 1 - Droit à l'image",
           url: "/qualite/Critère 1 - Droit à l'image.pdf",
           backgroundImage: "/images/4.png",
-        },
+        }, */
         {
           name: "Critère 1 - Indicateurs de résultats",
           url: "/qualite/Critère 1 - Indicateurs de résultats.pdf",
           backgroundImage: "/images/5.png",
         },
-        {
+        /* {
           name: "Critère 1 - Présentation d'une formation",
           url: "/qualite/Critère 1 - Présentation d'une formation.pdf",
           backgroundImage: "/images/6.png",
-        },
+        }, */
         {
           name: "Critère 2 - Accueil des stagiaires en situation de handicap - bilan",
           url: "/qualite/Critère 2 - Accueil des stagiaires en situation de handicap - bilan.pdf",
@@ -90,29 +90,29 @@ export default {
         },
         {
           name: "Critère 2 - Accueil des stagiaires en situation de handicap - formalisation",
-          url: "/qualite/Critère 2 - Accueil des stagiaires en situation de handicap - formalisation ok.pdf",
+          url: "/qualite/Critère 2 - Accueil des stagiaires en situation de handicap - formalisation.pdf",
           backgroundImage: "/images/9.png",
         },
         {
           name: "Critère 2 - Adaptation de l'accompagnement",
-          url: "/qualite/Critère 2 - Adaptation de l'accompagnement ok.pdf",
+          url: "/qualite/Critère 2 - Adaptation de l'accompagnement.pdf",
           backgroundImage: "/images/10.png",
         },
         {
           name: "Critère 2 - Analyse du besoin du bénéficiaire",
-          url: "/qualite/Critère 2 - Analyse du besoin du bénéficiaire ok.pdf",
+          url: "/qualite/Critère 2 - Analyse du besoin du bénéficiaire.pdf",
           backgroundImage: "/images/11.png",
         },
         {
           name: "Critère 2 - Dossier de candidature",
-          url: "/qualite/Critère 2 - Dossier de candidature ok.pdf",
+          url: "/qualite/Critère 2 - Dossier de candidature.pdf",
           backgroundImage: "/images/12.png",
         },
-        {
+        /* {
           name: "Critère 2 - Grille d'identification des besoins de formation",
           url: "/qualite/Critère 2 - Grille d'identification des besoins de formation.pdf",
           backgroundImage: "/images/13.png",
-        },
+        }, */
         {
           name: "Critère 2 - Indicateurs de suivi",
           url: "/qualite/Critère 2 - Indicateurs de suivi.pdf",
@@ -133,31 +133,31 @@ export default {
           url: "/qualite/Critère 3 - Annuaire des contacts ok.pdf",
           backgroundImage: "/images/17.png",
         },
-        {
+        /* {
           name: "Critère 3 - CGU",
           url: "/qualite/Critère 3 - CGU.pdf",
           backgroundImage: "/images/18.png",
-        },
-        {
+        }, */
+        /* {
           name: "Critère 3 - Conformité et mise à disposition de locaux de formation professionnelle et ERP",
           url: "/qualite/Critère 3 - Conformité et mise à disposition de locaux de formation professionnelle et ERP.pdf",
           backgroundImage: "/images/19.png",
-        },
-        {
+        }, */
+        /* {
           name: "Critère 3 - Eviter les situations d'échec",
           url: "/qualite/Critère 3 - Eviter les situations d'échec.pdf",
           backgroundImage: "/images/20.png",
-        },
-        {
+        }, */
+        /*  {
           name: "Critère 3 - Favoriser l'engagement des étudiants",
           url: "/qualite/Critère 3 - Favoriser l'engagement des étudiants.pdf",
           backgroundImage: "/images/21.png",
-        },
-        {
+        }, */
+        /* {
           name: "Critère 3 - Guide d'entretien des abandons",
           url: "/qualite/Critère 3 - Guide d'entretien des abandons.pdf",
           backgroundImage: "/images/22.png",
-        },
+        }, */
         {
           name: "Critère 3 - Livret d'accueil",
           url: "/qualite/Critère 3 - Livret d'accueil ok.pdf",
@@ -165,14 +165,14 @@ export default {
         },
         {
           name: "Critère 3 - Règlement intérieur",
-          url: "/qualite/Critère 3 - Règlement intérieur ok.pdf",
+          url: "/qualite/Critère 3 - Reglèment intérieur.pdf",
           backgroundImage: "/images/24.png",
         },
-        {
+        /* {
           name: "Critère 3 - Suivi de l'adaptation à l'accompagnement et à l'apprentissage",
           url: "/qualite/Critère 3 - Suivi de l'adaptation à l'accompagnement et à l'apprentissage.pdf",
           backgroundImage: "/images/25.png",
-        },
+        }, */
         {
           name: "Critère 4 - Les différents pôles",
           url: "/qualite/Critère 4 - Les différents pôles ok.pdf",
@@ -183,56 +183,56 @@ export default {
           url: "/qualite/Critère 4 - Organigramme ok.pdf",
           backgroundImage: "/images/27.png",
         },
-        {
+        /*  {
           name: "Critère 5 - Formations sur le handicap",
           url: "/qualite/Critère 5 - Formations sur le handicap.pdf",
           backgroundImage: "/images/28.png",
-        },
-        {
+        }, */
+        /*   {
           name: "Critère 5 - Plan de développement des compétences",
           url: "/qualite/Critère 5 - Plan de développement des compétences.pdf",
           backgroundImage: "/images/29.png",
-        },
-        {
+        }, */
+        /* {
           name: "Critère 3 - Handicap",
           url: "/qualite/Critère 3 - Handicap.pdf",
           backgroundImage: "/images/30.png",
-        },
-        {
+        }, */
+        /*   {
           name: "Critère 5 - Questionnaire d'identification des besoins de formation",
           url: "/qualite/Critère 5 - Questionnaire d'identification des besoins de formation.pdf",
           backgroundImage: "/images/31.png",
-        },
-        {
+        }, */
+        /*  {
           name: "Critère 7 - Mesures d'amélioration apprenants 2022",
           url: "/qualite/Critère 7 - Mesures d'amélioration apprenants 2022.pdf",
           backgroundImage: "/images/32.png",
-        },
-        {
+        }, */
+        /*  {
           name: "Critère 7 - Mesures d'amélioration apprenants 2023",
           url: "/qualite/Critère 7 - Mesures d'amélioration apprenants 2023.pdf",
           backgroundImage: "/images/33.png",
-        },
-        {
+        }, */
+        /* {
           name: "Process Abandons",
           url: "/qualite/Process Abandons.pdf",
           backgroundImage: "/images/34.png",
-        },
-        {
+        }, */
+        /*   {
           name: "Process Analyse du besoin",
           url: "/qualite/Process Analyse du besoin.pdf",
           backgroundImage: "/images/35.png",
-        },
-        {
+        }, */
+        /*  {
           name: "Process Handicap",
           url: "/qualite/Process Handicap.pdf",
           backgroundImage: "/images/36.png",
-        },
-        {
+        }, */
+        /*  {
           name: "Process Satisfaction",
           url: "/qualite/Process Satisfaction.pdf",
           backgroundImage: "/images/37.png",
-        },
+        }, */
       ],
     };
   },
