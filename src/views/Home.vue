@@ -160,11 +160,11 @@
             {{ firstParagraph_pt1 }}<span>2019</span>{{ firstParagraph_pt2 }}
           </h2>
           <h2 id="secondParagraph">
-            {{ secondParagraph_pt1 }}<span>70</span>{{ secondParagraph_pt2 }}
+            {{ secondParagraph_pt1 }}<span>68</span>{{ secondParagraph_pt2 }}
           </h2>
           <h2 id="thirdParagraph">
             {{ thirdParagraph_pt1 }}<span>166</span>{{ thirdParagraph_pt2
-            }}<span>1227</span>{{ thirdParagraph_pt3 }}{{ thirdParagraph_pt4 }}
+            }}<span>574</span>{{ thirdParagraph_pt3 }}{{ thirdParagraph_pt4 }}
           </h2>
           <h2 id="fourthParagraph">{{ fourthParagraph }}<span>94%.</span></h2>
           <h2 id="fifthParagraph">{{ fifthParagraph }}<span>99%.</span></h2>
@@ -567,8 +567,7 @@ export default {
         v.thirdParagraph_pt1 = "Investie et en plein essor avec ";
       }, 2200);
       setTimeout(function () {
-        v.thirdParagraph_pt2 =
-          " formations à son catalogue, elle forme environ ";
+        v.thirdParagraph_pt2 = " formations à son catalogue, elle forme ";
       }, 2200);
       setTimeout(function () {
         v.thirdParagraph_pt3 = " stagiaires par an.";
