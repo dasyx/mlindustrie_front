@@ -10,13 +10,7 @@
       <h2 class="title">Pour l'industrie sur mesure, dans toute la France</h2>
       <hr class="accessory" />
       <div class="container container_certification">
-        <div class="container_certification__flex-left">
-          <img
-            src="../../public/img/certification_qualiopi.webp"
-            width="600"
-            alt="certification_qualiopi"
-          />
-        </div>
+        <div class="container_certification__flex-left"></div>
         <!-- Section des avis clients -->
         <section id="section_clients" class="is-medium is-bold">
           <div class="hero-body">
@@ -171,11 +165,6 @@
           <h2 id="sixthParagraph">
             {{ sixthParagraph_pt1 }}<span>350</span>{{ sixthParagraph_pt2 }}
           </h2>
-          <img
-            src="../../public/img/certification_qualiopi.webp"
-            alt="certification_qualiopi"
-            class="certif_qualiopi"
-          />
         </div>
       </div>
     </div>
