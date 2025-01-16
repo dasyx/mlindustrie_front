@@ -63,6 +63,11 @@ export default {
           url: "/qualite/Critère 1 - CGV Ok.pdf",
           backgroundImage: "/images/3.png",
         },
+        {
+          name: "Critère 1 - Contrat de formation",
+          url: "/qualite/Critère 1 - Contrat de formation.pdf",
+          backgroundImage: "/images/3b.png",
+        },
         /* {
           name: "Critère 1 - Droit à l'image",
           url: "/qualite/Critère 1 - Droit à l'image.pdf",
