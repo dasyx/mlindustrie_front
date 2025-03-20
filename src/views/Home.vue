@@ -5,7 +5,7 @@
     <!--Affichage de l'encart de présentation + certification-->
     <div class="hero-body">
       <h1 class="title" onload="bgHover()">
-        Le spécialiste des formations techniques
+        Le spécialiste des formations techniques et réglementaires
       </h1>
       <h2 class="title">Pour l'industrie sur mesure, dans toute la France</h2>
       <hr class="accessory" />
@@ -341,7 +341,7 @@
   </section>
   <!-- Fin de la section certifications-->
   <!-- Début de la section partenaires-->
-  <aside><h2>Nos partenaires</h2></aside>
+  <!-- <aside><h2>Nos partenaires</h2></aside>
   <section class="hero is-medium is-bold carousel">
     <h2 class="carousel-title">Nos partenaires</h2>
     <input
@@ -414,7 +414,7 @@
         />
       </a>
     </div>
-  </section>
+  </section> -->
   <!-- Fin de la section partenaires-->
   <Footer />
 </template>
